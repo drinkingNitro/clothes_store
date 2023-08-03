@@ -1,5 +1,6 @@
 from django.contrib import admin
-from users.models import User, Favorite
+
+from users.models import Favorite, User
 
 admin.site.register(User)
 

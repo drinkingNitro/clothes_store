@@ -1,9 +1,6 @@
-from rest_framework import fields, serializers, status
-from rest_framework.response import Response
+from rest_framework import serializers
 
-from users.models import User, Favorite
-from products.serializers import ProductDetailsSerializer
-from products.models import Product
+from users.models import Favorite, User
 
 
 class UserSerializer(serializers.ModelSerializer):

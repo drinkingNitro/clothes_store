@@ -16,6 +16,17 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+from products.views import ProductListAPIView, ProductDetailsAPIView
+from users.views import UserCreateAPIView, FavoriteModelViewSet
+from rest_framework.authtoken.views import obtain_auth_token
+
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('api/products/', ProductListAPIView.as_view()),
+    path('api/products/<int:pk>/', ProductDetailsAPIView.as_view()),
+    path('api/users/create/', UserCreateAPIView.as_view()),
+    path('api/obtain_auth_token/', obtain_auth_token),
+    path('api/users/favorite/', FavoriteModelViewSet.as_view({'get': 'list'})),
+    path('api/users/add_favorite/<int:pk>/', FavoriteModelViewSet.as_view({'post': 'create'})),
+    path('api/users/favorite/<int:pk>/', FavoriteModelViewSet.as_view({'delete': 'destroy'})),
 ]
